@@ -3,9 +3,10 @@
 #
 rpart <-
     function(formula, data, weights, subset, na.action = na.rpart, method,
-             model = FALSE, x = FALSE, y = TRUE, parms, control, cost, ...)
+             model = FALSE, x = FALSE, y = TRUE, parms, control, cost, xcost=0,  ...)
 {
     Call <- match.call()
+    #print("using own version")
     if (is.data.frame(model)) {
         m <- model
         model <- FALSE

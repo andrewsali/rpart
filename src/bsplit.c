@@ -65,6 +65,8 @@ bsplit(pNode me, int n1, int n2)
 	    rp.iscale = improve;        /* largest seen so far */
 	if (improve > (rp.iscale * 1e-10)) {
 	    improve /= rp.vcost[i];     /* scale the improvement */
+       improve *= unif_rand();
+       //printf("hello");
 	    tsplit = insert_split(&(me->primary), nc, improve, rp.maxpri);
 	    if (tsplit) {
 		tsplit->improve = improve;

@@ -77,6 +77,10 @@ rpart(SEXP ncat2, SEXP method2, SEXP opt2,
     xvals = asInteger(xvals2);
     wt = REAL(wt2);
     parms = REAL(parms2);
+    
+    /* set seed */
+    GetRNGstate();
+    
     /*
      * initialize the splitting functions from the function table
      */
@@ -113,6 +117,7 @@ rpart(SEXP ncat2, SEXP method2, SEXP opt2,
     rp.wt = wt;
     rp.iscale = 0.0;
     rp.vcost = REAL(cost2);
+    //rp.xcost = REAL(cost2);
 
     /*
      * create the "ragged array" pointers to the matrix
@@ -345,5 +350,6 @@ rpart(SEXP ncat2, SEXP method2, SEXP opt2,
     }
 
     UNPROTECT(1 + nout);
+    PutRNGstate();
     return rlist;
 }
